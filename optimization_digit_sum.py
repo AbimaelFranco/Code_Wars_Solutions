@@ -4,3 +4,6 @@ def digit_sum(n):
 
 # def digit_sum(n):
 #     return sum([int(i) for i in str(n)])
+
+# def digit_sum(n):
+#     return sum(map(int, str(n)))
