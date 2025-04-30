@@ -1,26 +1,9 @@
-def cowboys_dollars(boots):
-    boot = 0
+def cowboys_dollars(boots: list[str]) -> str:
+    search = "[(1)]"
     counter = [0, 0]
-    aux = ""
-    for i in boots:
-        for j in i:
-            
-            if j == "(" and aux == "":
-                aux += "("
-            elif j == "1" and aux == "(":
-                aux += "1"
-            elif j == ")" and aux == "(1" and boot == 0:
-                counter[boot] = counter[boot] + 1
-                aux = ""
-            elif j == ")" and aux == "(1" and boot == 1:
-                counter[boot] = counter[boot] + 1
-                aux = ""
-            elif j == "&":
-                aux = ""
-                break
-            else:
-                aux = ""
-            
-        boot += 1
-    
-    return "This Rhinestone Cowboy has {} dollar bills in his right boot and {} in the left".format(counter[1], counter[0])
+        
+    for i, boot in enumerate(boots):
+        segments = boot.split("&")[0]
+        counter[i] = segments.count(search)
+        
+    return f"This Rhinestone Cowboy has {counter[1]} dollar bills in his right boot and {counter[0]} in the left"
