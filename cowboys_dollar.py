@@ -1,7 +1,6 @@
 def cowboys_dollars(boots):
     boot = 0
-    counter_left = 0
-    counter_right = 0
+    counter = [0, 0]
     aux = ""
     for i in boots:
         for j in i:
@@ -11,12 +10,10 @@ def cowboys_dollars(boots):
             elif j == "1" and aux == "(":
                 aux += "1"
             elif j == ")" and aux == "(1" and boot == 0:
-                counter_left += 1
-                print("billete detectado en izquierda")
+                counter[boot] = counter[boot] + 1
                 aux = ""
             elif j == ")" and aux == "(1" and boot == 1:
-                counter_right += 1
-                print("billete detectado en derecha")
+                counter[boot] = counter[boot] + 1
                 aux = ""
             elif j == "&":
                 aux = ""
@@ -25,7 +22,5 @@ def cowboys_dollars(boots):
                 aux = ""
             
         boot += 1
-    print(counter_left)
-    print(counter_right)
     
-    return "This Rhinestone Cowboy has {} dollar bills in his right boot and {} in the left".format(counter_right, counter_left)
+    return "This Rhinestone Cowboy has {} dollar bills in his right boot and {} in the left".format(counter[1], counter[0])
